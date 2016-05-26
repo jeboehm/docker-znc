@@ -1,0 +1,35 @@
+Version = 1.6.1
+HideVersion = true
+LoadModule = webadmin
+
+<Listener listener0>
+        AllowIRC = true
+        AllowWeb = false
+        IPv4 = true
+        IPv6 = false
+        Port = 6667
+        SSL = false
+        URIPrefix = /
+</Listener>
+
+<Listener listener1>
+        AllowIRC = false
+        AllowWeb = true
+        IPv4 = true
+        IPv6 = false
+        Port = 8080
+        SSL = false
+        URIPrefix = /
+</Listener>
+
+<User admin>
+        Pass       = sha256#00793765305dfc3e7bba28267fe9d9e2c721ebef4e20f3a89720265a89ee6a4f#N!lgZM8S.HZ4zH?)vFoW#
+        Admin      = true
+        Nick       = admin
+        AltNick    = admin_
+        Ident      = admin
+        RealName   = Got ZNC?
+        Buffer     = 50
+        AutoClearChanBuffer = true
+        ChanModes  = +stn
+</User>
