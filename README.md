@@ -1,7 +1,9 @@
-# docker-znc
+# jeboehm/znc
 
 This allows you to run [ZNC](http://znc.in) in a Docker container.
 The image is based on Alpine 3.3.
+
+[![Build Status](https://travis-ci.org/jeboehm/docker-znc.svg?branch=master)](https://travis-ci.org/jeboehm/docker-znc)
 
 ## Ports
 - 6667 IRC
