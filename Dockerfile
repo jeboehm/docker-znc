@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.4
 MAINTAINER Jeffrey Boehm "jeff@ressourcenkonflikt.de"
 
 RUN apk add --update ca-certificates znc && rm -rf /var/cache/apk/*
@@ -13,4 +13,3 @@ VOLUME /znc-data
 EXPOSE 6667 8080
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD [""]
