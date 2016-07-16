@@ -1,0 +1,12 @@
+version: '2'
+services:
+  znc:
+    build: .
+    restart: on-failure:50
+    read_only: true
+    volumes:
+      - data:/znc-data
+
+volumes:
+  data:
+    driver: local
