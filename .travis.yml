@@ -3,7 +3,7 @@ services:
 
 install:
   - docker build -t jeboehm/znc .
-  - docker run -d -p 127.0.0.1:8080:8080 -p 127.0.0.1:6667:6667 --name znc jeboehm/znc
+  - docker run -d --read-only -p 127.0.0.1:8080:8080 -p 127.0.0.1:6667:6667 -v ~/.znc:/znc-data --name znc jeboehm/znc
 
 script:
   - docker ps | grep -q znc
