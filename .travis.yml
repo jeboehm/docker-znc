@@ -1,10 +1,26 @@
+sudo: required
+
 services:
   - docker
 
-install:
-  - docker build -t jeboehm/znc .
-  - docker run -d --read-only -p 127.0.0.1:8080:8080 -p 127.0.0.1:6667:6667 -v ~/.znc:/znc-data --name znc jeboehm/znc
+env:
+  global:
+    - DOCKER_VERSION=1.11.1-0~trusty
+    - DOCKER_COMPOSE_VERSION=1.7.1
+
+before_install:
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - apt-cache madison docker-engine
+  - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y docker-engine=${DOCKER_VERSION}
 
 script:
+  - docker version
+  - docker-compose version
+  - docker-compose build
+  - docker-compose up -d
+  - sleep 5
+  - docker-compose logs znc
   - docker ps | grep -q znc
   - curl -q http://127.0.0.1:8080
