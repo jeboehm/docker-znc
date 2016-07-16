@@ -1,15 +1,17 @@
 FROM alpine:3.4
 MAINTAINER Jeffrey Boehm "jeff@ressourcenkonflikt.de"
 
-RUN apk add --update ca-certificates znc && rm -rf /var/cache/apk/*
-RUN adduser zncrun -u 2000 -D -H
+ENV DATADIR="/znc-data"
 
-ADD entrypoint.sh /entrypoint.sh
-ADD znc.conf.default /znc.conf.default
-RUN mkdir /znc-data
+RUN apk add --no-cache ca-certificates znc && \
+    adduser zncrun -u 2000 -D -H && \
+    mkdir $DATADIR && \
+    chown zncrun $DATADIR
 
-VOLUME /znc-data
+COPY rootfs/ /
+
+VOLUME $DATADIR
+USER zncrun
 
 EXPOSE 6667 8080
-
 ENTRYPOINT ["/entrypoint.sh"]
