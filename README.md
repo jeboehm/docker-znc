@@ -13,7 +13,7 @@ The image is based on Alpine 3.4.
 Username / Password: admin / admin
 
 ## Run
-``docker run -p 6667:6667 -p 8080:8080 -v ~/.znc:/znc-data -d jeboehm/znc``
+``docker run --read-only -p 6667:6667 -p 8080:8080 -v ~/.znc:/znc-data -d jeboehm/znc``
 
 Your configuration will be kept in ~/.znc, even if you delete the container.
 
